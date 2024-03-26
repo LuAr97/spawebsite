@@ -1,7 +1,6 @@
 import Title from "../components/Title";
 import { useEffect, useState } from "react";
 import { Container, Carousel } from "react-bootstrap";
-import '../styles/pages/Home.css'
 
 const Home = () => {
     
@@ -11,11 +10,11 @@ const Home = () => {
     }
     return (
         <div>
-            <Title type={true}>Inicio</Title>
+            <Title>Inicio</Title>
             <Container>
                 <Carousel activeIndex={index} onSelect={handleSelect}>
                 <Carousel.Item>
-                    <a href="/cuerpo">
+                    <a href="/corporales">
                         <img src="/img/services/carousel/body1.jpg" width="800" height="400"/>
                         <Carousel.Caption>
                         <h3>Cuerpo</h3>
@@ -24,10 +23,10 @@ const Home = () => {
                     </a>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <a href="/facial">
+                    <a href="/faciales">
                         <img src="/img/services/carousel/facial.jfif" width="800" height="400"/>
                         <Carousel.Caption>
-                        <h3>Cara</h3>
+                        <h3>Faciales</h3>
                         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                         </Carousel.Caption>
                     </a>

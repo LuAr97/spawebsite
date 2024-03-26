@@ -1,13 +1,13 @@
 import Title from "../components/Title";
 import Services from "../components/Services";
 
-const FacialServices = () => {
+const BodyServices = () => {
     return(
         <div>
-            <Title>Faciales</Title>
-            <Services type={true}/>
+            <Title>Corporales</Title>
+            <Services type={false}/>
         </div>
     );
 }
 
-export default FacialServices;
+export default BodyServices;

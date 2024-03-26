@@ -1,22 +1,13 @@
-import userEvent from "@testing-library/user-event";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Card, CardImg, Col, Container, Button, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+import ServiceCard from "./ServiceCard";
+import ServiceResponse from "../interfaces/ServiceInterfaces";
 
 interface Props {
     type: boolean
 }
-
-interface ServiceResponse{
-    id: number;
-    img: string;
-    price: number;
-    name: string;
-    description: string;
-    duration: number;
-    type: number;
-    sessions: number;
-}
+ 
 const Services = ({ type } : Props) => {
     const [servicesList, setServicesList] = useState<ServiceResponse[]>([]);
     
@@ -42,17 +33,7 @@ const Services = ({ type } : Props) => {
                 ? servicesList.map((service) => {
                     return(
                         <Col key={service.id}>
-                            <Card className="serviceCard">
-                                <CardImg variant="top" src={service.img}/>
-                                <Card.Body>
-                                    <Card.Title>{service.name.toUpperCase()}</Card.Title>
-                                    <Card.Text>
-                                        {service.description}
-                                    </Card.Text>
-                                    <Button>Book a Session</Button>
-                                    <Button className='infoButton'>Info</Button>
-                                </Card.Body>
-                            </Card>
+                            <ServiceCard service={service}/>
                         </Col>
                     );
                 })

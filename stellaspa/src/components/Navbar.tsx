@@ -17,7 +17,7 @@ const NavbarComponent = () => {
                     </NavDropdown> 
                 </Nav>
                 <Nav.Item className="justify-content-end">
-                    <Button size="sm">Ingresar</Button>
+                    <a href="/login"><i className="bi-person-fill service-icon"></i></a>
                 </Nav.Item>
             </Container>
         </Navbar>

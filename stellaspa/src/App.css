@@ -11,9 +11,8 @@
   pointer-events: none;
 }
 
-.serviceCard {
-  width: 20rem;
-  height: 40rem;
+.service-icon {
+  color: #6E0B4D;
 }
 
 .infoButton{
@@ -25,7 +24,7 @@
   color: #5E5C5D;
 }
 .titleContainer{
-  margin: 3em;
+  margin: 1em;
 }
 
 @media (prefers-reduced-motion: no-preference) {

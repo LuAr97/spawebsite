@@ -4,14 +4,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NavbarComponent from './components/Navbar';
 import FacialServices from './pages/FacialServices';
-function App() {
-  
-  // React.useEffect(() => {
-  //   fetch("/api")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.message));
-  // }, []);
+import BodyServices from './pages/BodyServices';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import Login from './pages/Login';
 
+function App() {
   return (
     <div className="App">
       <NavbarComponent />
@@ -19,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/faciales" element={<FacialServices />}/>
+          <Route path="/corporales" element={<BodyServices />}/>
+          <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -27,6 +27,17 @@
   margin: 1em;
 }
 
+.navbar{
+  background: #E2CCDB;
+  max-height: 40px;
+  height: 50px; 
+  margin-bottom: 1rem !important;
+}
+
+.app-button{
+  background-color: #6E0B4D !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

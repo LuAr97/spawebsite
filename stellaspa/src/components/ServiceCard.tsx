@@ -33,10 +33,10 @@ const ServiceCard = ({ service } : {service :ServiceResponse}) => {
                     <ListGroup.Item>
                         <Row>
                             <Col>
-                                <p style={{'fontWeight': 'bold', 'color': '#6E0B4D'}}>No. Sesiones:</p>
+                                <p style={{'fontWeight': 'bold', 'color': '#6E0B4D'}}>No. Sessions:</p>
                             </Col>
                             <Col>
-                                <p>  {` ${service.sessions} sessiones`}</p>
+                                <p>  {` ${service.sessions} sessions`}</p>
                             </Col>
                         </Row>
                     </ListGroup.Item>
@@ -44,7 +44,7 @@ const ServiceCard = ({ service } : {service :ServiceResponse}) => {
                 </ListGroup>
                 <Row>
                     <Col>
-                        <Button onClick={handleOpen}>Book a Session</Button>
+                        <Button className="app-button" onClick={handleOpen}>Book a Session</Button>
                     </Col>
                     <Col>
                         <Button className='infoButton'>Info</Button>

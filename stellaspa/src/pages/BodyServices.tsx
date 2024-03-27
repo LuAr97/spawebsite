@@ -4,7 +4,7 @@ import Services from "../components/Services";
 const BodyServices = () => {
     return(
         <div>
-            <Title>Corporales</Title>
+            <Title>Body</Title>
             <Services type={false}/>
         </div>
     );

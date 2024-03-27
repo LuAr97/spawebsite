@@ -72,7 +72,7 @@ const BookingModal = ({ service, onClose, show } : { service: ServiceResponse , 
                     date,
                     time,
                     expired : 0,
-                    clientId,
+                    clientId : response.data.insertId,
                     comment,
                     serviceId : service.id,
                     session
@@ -110,7 +110,7 @@ const BookingModal = ({ service, onClose, show } : { service: ServiceResponse , 
                 <Modal.Body>
                     <Form>
                         <Form.Group as={Row} className="mb-3" controlId="exampleForm.Description" >
-                            <Form.Label column sm="2">Descripcion : </Form.Label>
+                            <Form.Label column sm="2">Description : </Form.Label>
                             <Col sm="10">
                                 <p>{service.description} 11111111111111111 1111111111111111111 111111111111111111111 111111111111111111111 11111111111111111111111111111111111111 1111111111111111111111 111111111111111111111111111 111111111111111111111111111 11111111111111111111</p>
                             </Col>
@@ -120,7 +120,7 @@ const BookingModal = ({ service, onClose, show } : { service: ServiceResponse , 
                             <Row>
                                 <Col>
                                     <Form.Group as={Row} className="mb-3" controlId="date" >
-                                        <Form.Label column sm="2">Fecha</Form.Label>
+                                        <Form.Label column sm="2">Date</Form.Label>
                                         <Col sm="10">
                                             <Form.Control type="date" onChange={handleDate}/>
                                         </Col>
@@ -128,7 +128,7 @@ const BookingModal = ({ service, onClose, show } : { service: ServiceResponse , 
                                 </Col>
                                 <Col>
                                     <Form.Group as={Row} className="mb-3" controlId="time" >
-                                        <Form.Label column sm="2">Hora</Form.Label>
+                                        <Form.Label column sm="2">Time</Form.Label>
                                         <Col sm="10">
                                         <Form.Select onChange={handleTime} aria-label="Default select example">
                                             <option></option>
@@ -145,21 +145,21 @@ const BookingModal = ({ service, onClose, show } : { service: ServiceResponse , 
                         
                         
                         <Form.Group as={Row} className="mb-3" controlId="name" >
-                            <Form.Label column sm="2">Nombre Completo</Form.Label>
+                            <Form.Label column sm="2">Full Name</Form.Label>
                             <Col sm="10">
                                 <Form.Control onChange={handleName} type="text" />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3" controlId="name" >
-                            <Form.Label column sm="2">Informacion Relevante</Form.Label>
+                            <Form.Label column sm="2">Relevant Information</Form.Label>
                             <Col sm="10">
                                 <Form.Control onChange={handleComments} as="textarea" rows={3}/>
-                                <Form.Text >Alergias, enfermedades, dietas y/o alguna informacion necesaria.</Form.Text>
+                                <Form.Text >Allergies, sickness, diets and any necesary information.</Form.Text>
                             </Col>
                             
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3" controlId="name" >
-                            <Form.Label column sm="2">No. Sesiones Hechas</Form.Label>
+                            <Form.Label column sm="2">Last Session</Form.Label>
                             <Col sm="10">
                                 <Form.Select onChange={handleSession} aria-label="Default select example">
                                     <option>Seleccionar</option>
@@ -168,19 +168,19 @@ const BookingModal = ({ service, onClose, show } : { service: ServiceResponse , 
                                     })}
 
                                 </Form.Select>
-                                <Form.Text>Si es primera cita o esta volviento a comenzar el tratamiento, selecione 0.</Form.Text>
+                                <Form.Text>If it is first time or it is starting the treament again. please select 0.</Form.Text>
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row} className="mb-3" controlId="age" >
-                            <Form.Label column sm="2">Edad</Form.Label>
+                            <Form.Label column sm="2">Age</Form.Label>
                             <Col sm="10">
                                 <Form.Control onChange={handleAge} type="number" />
                             </Col>
                         </Form.Group>
 
                         <Form.Group as={Row} className="mb-3" controlId="email" >
-                            <Form.Label column sm="2">Correo Electronico</Form.Label>
+                            <Form.Label column sm="2">Email</Form.Label>
                             <Col sm="10">
                                 <Form.Control onChange={handleEmail} type="email" />
                             </Col>
@@ -194,7 +194,7 @@ const BookingModal = ({ service, onClose, show } : { service: ServiceResponse , 
                             <p>{`Total: `} <NumericFormat value={service.price} displayType={'text'} thousandSeparator={true} prefix="  "/></p>
                             </Col>
                             <Col sm={4}>
-                                <Button onClick={handleSubmit}>
+                                <Button className="app-button" onClick={handleSubmit}>
                                     Submit
                                 </Button>
                             </Col>

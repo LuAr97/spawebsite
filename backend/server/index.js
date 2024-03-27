@@ -22,8 +22,25 @@ app.get("/api/services/type/:type", (req, res) => {
 });
 
 app.get("/unavailability/:date", (req, res) => {
-    console.log(req.params)
     db.query(`SELECT * FROM availability WHERE date = '${req.params.date}'`, (err, result) => {
+        if(err) {
+            console.log(`Fetch unavailability failed : ${err}`);
+        }
+        res.json(result);
+    });
+});
+
+app.get("/bookings/:date", (req, res) => {
+    db.query(`SELECT b.*,c.name as client ,s.name as service, s.img FROM booking b INNER JOIN clients c ON c.id = b.client_id INNER JOIN services s ON s.id = b.service_id WHERE date = '${req.params.date}'`, (err, result) => {
+        if(err) {
+            console.log(`Fetch unavailability failed : ${err}`);
+        }
+        res.json(result);
+    });
+});
+
+app.get("/accounts/:username", (req, res) => {
+    db.query(`SELECT * FROM accounts WHERE username = '${req.params.username}'`, (err, result) => {
         if(err) {
             console.log(`Fetch unavailability failed : ${err}`);
         }
@@ -33,7 +50,6 @@ app.get("/unavailability/:date", (req, res) => {
 
 app.post("/booking", (req, res) => {
     const body = req.body;
-    console.log(body)
     db.query(`INSERT INTO booking(date, time, expired, client_id, comments, service_id, current_session) VALUES ('${body.date}', '${body.time}', ${body.expired}, ${body.clientId}, '${body.comment}', ${body.serviceId}, '${body.session}')`, (err, result) => {
         if(err) {
             console.log(`Post booking failed : ${err}`);

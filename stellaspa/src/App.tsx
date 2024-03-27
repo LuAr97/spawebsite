@@ -7,6 +7,7 @@ import FacialServices from './pages/FacialServices';
 import BodyServices from './pages/BodyServices';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/faciales" element={<FacialServices />}/>
           <Route path="/corporales" element={<BodyServices />}/>
           <Route path="/login" element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard />}/>
         </Routes>
       </BrowserRouter>
     </div>

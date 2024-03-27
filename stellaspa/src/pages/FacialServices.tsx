@@ -4,7 +4,7 @@ import Services from "../components/Services";
 const FacialServices = () => {
     return(
         <div>
-            <Title>Faciales</Title>
+            <Title>Facials</Title>
             <Services type={true}/>
         </div>
     );

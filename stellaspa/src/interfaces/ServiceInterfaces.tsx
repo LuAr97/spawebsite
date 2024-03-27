@@ -4,7 +4,6 @@ export interface ServiceResponse{
     price: number;
     name: string;
     description: string;
-    duration: number;
     type: number;
     sessions: number;
 }

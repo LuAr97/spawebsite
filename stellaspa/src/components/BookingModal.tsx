@@ -26,45 +26,41 @@ const BookingModal = ({ service, onClose, isOpen } : { service: ServiceResponse 
     const [comment, setComment] = useState('');
     const [age, setAge] = useState(0);
     const [email, setEmail] = useState('');
-    const [availabilityList, setAvailabilityList] =useState(() => {
-            const times: string[] = [];
-            for (let hour = 9; hour <= 17; hour++) { 
-              for (let minute = 0; minute < 60; minute += 30) { 
-                const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
-                const formattedMinute = minute === 0 ? '00' : `${minute}`;
-                const timeString = `${formattedHour}:${formattedMinute}`;
-                times.push(timeString);
-              }
-            }
-            return times;
-        }
-    )
+    const [availabilityList, setAvailabilityList] =useState<string[]>([])
     const [phone, setPhone] = useState('');
 
+    const generate = () => {
+        const times: string[] = [];
+        for (let hour = 9; hour <= 17; hour++) { 
+          for (let minute = 0; minute < 60; minute += 60) { 
+            const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
+            const formattedMinute = minute === 0 ? '00' : `${minute}`;
+            const timeString = `${formattedHour}:${formattedMinute}`;
+            times.push(timeString);
+          }
+        }
+        return times;
+    }
+
     const handleDate = (event: React.ChangeEvent<HTMLInputElement>) => {
-        var availability = availabilityList;
         setDate(event.target.value);
-        fetchUnavailability(event.target.value);
-        unavailability.map((item) => {
-            const time = item.time;
-            if(availability.includes(time)) {
-                availability.splice(availability.indexOf(time),1);
-            }
-        })
-        console.log(availability);
-        setAvailabilityList(availability);
-        
+        handleAvailability(); 
     };
 
-    const fetchUnavailability = async (date : string) => {
+    const handleAvailability = async() => {
+        const availability = generate();
+        setAvailabilityList(availability)
         try {
-            console.log(`Fetching unavailability for ${date}`);
-            const response =  await axios.get<AvailabilityResponse[]>(`/unavailability/${date}`);
-            setUnavailability(response.data);
+            await axios.get<AvailabilityResponse[]>(`/unavailability/${date}`).then((response) => {
+                setUnavailability(response.data);
+                unavailability.map((item) => {
+                    setAvailabilityList(availability => availability.filter((time) => !time.includes(item.time)));
+                });
+            }); 
         } catch (error) {
-            console.log(`Fetch unavailability for date ${date} failed : ${error}`);
-        }
-    };
+            console.log(`Fetch unavailability failed`)
+        }      
+    }
 
     const handleTime = (event: React.ChangeEvent<HTMLInputElement>) => setTime(event.target.value);
     const handleName = (event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value);

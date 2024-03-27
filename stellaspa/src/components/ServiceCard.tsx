@@ -23,7 +23,7 @@ const ServiceCard = ({ service } : {service :ServiceResponse}) => {
     return (
         <>
             <Card >
-                <CardImg variant="top" src={service.img}/>
+                <CardImg variant="top" src={service.img} width={100} height={200}/>
                 <CardBody style={{'textAlign':'left'}}>
                     <CardTitle style={{'fontSize': '18px'}}>{service.name.toUpperCase()}</CardTitle>
                     <CardText style={{'fontSize': '13px', 'textAlign':'left'}}>
@@ -34,10 +34,10 @@ const ServiceCard = ({ service } : {service :ServiceResponse}) => {
                     <ListGroupItem>
                         <Row>
                             <Col>
-                                <p>{<i className="bi-clock-fill service-icon"></i>}{`  ${service.duration} hrs`}</p>
+                                <p>{<i className="bi-coin service-icon"></i>} Price:</p>
                             </Col>
                             <Col>
-                                <p>{<i className="bi-coin service-icon"></i>}<NumericFormat value={service.price} displayType={'text'} thousandSeparator={true} prefix="  "/></p>
+                                <p><NumericFormat value={service.price} displayType={'text'} decimalScale={2} thousandSeparator={true} prefix="$    "/></p>
                             </Col>
                         </Row>
                     </ListGroupItem>

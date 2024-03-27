@@ -5,6 +5,18 @@
   height: 100vh;
   overflow-y: auto;
 }
+.modal {
+  & .modal-header {
+    background-color: #E2CCDB;
+    color: #6E0B4D;
+  }
+  font-family: Georgia, serif;
+  
+}
+
+.modal {
+  font-family: Georgia, serif;
+}
 
 .App-logo {
   height: 40vmin;
@@ -28,20 +40,31 @@
 }
 
 .navbar{
-  background: #E2CCDB;
-  max-height: 40px;
-  height: 50px; 
-  margin-bottom: 1rem !important;
+    background: #E2CCDB;
+    max-height: 50px;
+    margin-bottom: 1rem !important;
+}
+.nav-link{
+  color: #5E5C5D !important;
 }
 
 .app-button{
-  background-color: #6E0B4D !important;
+    background-color: #6E0B4D !important;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.carousel-caption h3{
+  text-shadow: 0px 2px #555355;
+  
+}
+.carousel-caption p{
+  text-shadow: 0px 1px #555355;
+  
 }
 
 .App-header {

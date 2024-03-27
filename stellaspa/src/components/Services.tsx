@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row, Container } from "reactstrap";
 import ServiceCard from "./ServiceCard";
-import ServiceResponse from "../interfaces/ServiceInterfaces";
+import { ServiceResponse } from "../interfaces/ServiceInterfaces";
+
 
 interface Props {
     type: boolean
@@ -15,6 +16,7 @@ const Services = ({ type } : Props) => {
     useEffect(() => {
         fetchServices();
     },[]);
+
     const fetchServices = async ()  => {
         try {
             const response = await axios.get<ServiceResponse[]>(`/api/services/type/${serviceType}`);
@@ -23,7 +25,7 @@ const Services = ({ type } : Props) => {
         } catch (error) {
            console.log(`Failed to fetch ${type ? 'Facial' : 'Body'} services : ${error}`) 
         }
-    }
+    };
     
     
     return(
@@ -41,6 +43,6 @@ const Services = ({ type } : Props) => {
                 }
             </Row>
         </Container>
-    )
-}
+    );
+};
 export default Services;

@@ -8,6 +8,6 @@ const FacialServices = () => {
             <Services type={true}/>
         </div>
     );
-}
+};
 
 export default FacialServices;

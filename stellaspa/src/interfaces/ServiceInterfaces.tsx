@@ -1,4 +1,4 @@
-interface ServiceResponse{
+export interface ServiceResponse{
     id: number;
     img: string;
     price: number;
@@ -8,5 +8,22 @@ interface ServiceResponse{
     type: number;
     sessions: number;
 }
+export interface AvailabilityResponse{
+    id: number;
+    time: string;
+    date: string;
+}
 
-export default ServiceResponse;
+export interface BookingResponse {
+    id: number;
+    date: string;
+    time: string;
+    expired: number;
+    client: string;
+    age: number;
+    comments: string;
+    service: string;
+    current_session: number;
+    img: string;
+    phone: string;
+}

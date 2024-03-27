@@ -9,15 +9,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <NavbarComponent />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/faciales" element={<FacialServices />}/>
-          <Route path="/corporales" element={<BodyServices />}/>
+          <Route path="/facials" element={<FacialServices />}/>
+          <Route path="/body" element={<BodyServices />}/>
           <Route path="/login" element={<Login />} />
           <Route path='/dashboard' element={<Dashboard />}/>
         </Routes>

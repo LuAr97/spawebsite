@@ -8,6 +8,6 @@ const BodyServices = () => {
             <Services type={false}/>
         </div>
     );
-}
+};
 
 export default BodyServices;

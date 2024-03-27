@@ -1,8 +1,18 @@
-import { Card, CardImg, Col, Button, Row, ListGroup, Modal } from "react-bootstrap";
+import { 
+    Card, 
+    CardImg, 
+    Col, 
+    Button, 
+    Row, 
+    ListGroup, 
+    CardBody, 
+    CardTitle, 
+    CardText, 
+    ListGroupItem 
+} from "reactstrap";
 import { NumericFormat } from "react-number-format";
-import ServiceResponse from "../interfaces/ServiceInterfaces";
+import { ServiceResponse } from "../interfaces/ServiceInterfaces";
 import { useState } from "react";
-import Title from "./Title";
 import BookingModal from "./BookingModal";
 
 const ServiceCard = ({ service } : {service :ServiceResponse}) => {
@@ -12,15 +22,16 @@ const ServiceCard = ({ service } : {service :ServiceResponse}) => {
 
     return (
         <>
-        <Card className="serviceCard">
-            <CardImg variant="top" src={service.img}/>
-            <Card.Body style={{'textAlign':'left'}}>
-                <Card.Title style={{'fontSize': '18px'}}>{service.name.toUpperCase()}</Card.Title>
-                <Card.Text style={{'fontSize': '13px', 'textAlign':'left'}}>
-                    {service.description}
-                </Card.Text>
-                <ListGroup variant="flush">
-                    <ListGroup.Item>
+            <Card >
+                <CardImg variant="top" src={service.img}/>
+                <CardBody style={{'textAlign':'left'}}>
+                    <CardTitle style={{'fontSize': '18px'}}>{service.name.toUpperCase()}</CardTitle>
+                    <CardText style={{'fontSize': '13px', 'textAlign':'left'}}>
+                        {service.description}
+                    </CardText>
+                </CardBody>
+                <ListGroup flush>
+                    <ListGroupItem>
                         <Row>
                             <Col>
                                 <p>{<i className="bi-clock-fill service-icon"></i>}{`  ${service.duration} hrs`}</p>
@@ -29,8 +40,8 @@ const ServiceCard = ({ service } : {service :ServiceResponse}) => {
                                 <p>{<i className="bi-coin service-icon"></i>}<NumericFormat value={service.price} displayType={'text'} thousandSeparator={true} prefix="  "/></p>
                             </Col>
                         </Row>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
+                    </ListGroupItem>
+                    <ListGroupItem>
                         <Row>
                             <Col>
                                 <p style={{'fontWeight': 'bold', 'color': '#6E0B4D'}}>No. Sessions:</p>
@@ -39,20 +50,21 @@ const ServiceCard = ({ service } : {service :ServiceResponse}) => {
                                 <p>  {` ${service.sessions} sessions`}</p>
                             </Col>
                         </Row>
-                    </ListGroup.Item>
+                    </ListGroupItem>
                     
                 </ListGroup>
-                <Row>
-                    <Col>
-                        <Button className="app-button" onClick={handleOpen}>Book a Session</Button>
-                    </Col>
-                    <Col>
-                        <Button className='infoButton'>Info</Button>
-                    </Col>
-                </Row>
-            </Card.Body>
-        </Card>
-        <BookingModal onClose={handleClose} show={show} service={service}/>
+                <CardBody>
+                    <Row>
+                        <Col>
+                            <Button className="app-button" onClick={handleOpen}>Book a Session</Button>
+                        </Col>
+                        <Col>
+                            <Button className='infoButton'>Info</Button>
+                        </Col>
+                    </Row>
+                </CardBody>
+            </Card>
+            <BookingModal onClose={handleClose} isOpen={show} service={service}/>
         </>
     );
 }
